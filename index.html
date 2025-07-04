@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Most Asked Questions Widget</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="maq-widget">
+        <div class="maq-header">
+            <h1 class="maq-title">Most Asked Questions</h1>
+            <p class="maq-subtitle">Discover trending questions with proven market demand and scalable product ideas</p>
+            
+            <div class="maq-input-group">
+                <label for="maqNicheInput" class="maq-input-label">Specific Niche (optional)</label>
+                <input type="text" id="maqNicheInput" class="maq-input" placeholder="e.g., 'fitness', 'digital marketing', 'parenting' (leave blank for all niches)">
+            </div>
+            
+            <button id="maqFetchBtn" class="maq-btn">Get The Most Asked Questions</button>
+        </div>
+
+        <div id="maqLoader" class="maq-loader">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+
+        <div id="maqError" class="maq-error"></div>
+
+        <div id="maqResults" class="maq-results">
+            <div class="maq-copy-all-container">
+                <button id="maqCopyAllBtn" class="maq-copy-all-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                    </svg>
+                    Copy All Results
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
