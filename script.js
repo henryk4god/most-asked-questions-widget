@@ -9,9 +9,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const copyAllContainer = document.querySelector('.maq-copy-all-container');
     const copyAllBtn = document.getElementById('maqCopyAllBtn');
     
-    // API configuration
-    const API_KEY = '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';
-    const API_URL = 'https://openrouter.ai/api/v1/chat/completions';
+    // Backend API endpoint
+    const BACKEND_API_URL = 'https://most-asked-question-api.onrender.com/api/most-asked-questions';
     
     // Add click handler to fetch button
     fetchBtn.addEventListener('click', async function() {
@@ -29,48 +28,14 @@ document.addEventListener('DOMContentLoaded', function() {
         loader.style.display = 'block';
         
         try {
-            // Build prompt based on niche
-            let prompt = `Generate 10 of the most frequently asked online questions`;
-            
-            if (niche) {
-                prompt += ` specifically in the ${niche} niche`;
-            } else {
-                prompt += ` across diverse niches`;
-            }
-            
-            prompt += `, focusing on trending topics not older than six months with proven market demand indicated by active paid advertising campaigns. For each question, propose a scalable product idea that addresses the underlying problem or need, ensuring the solution can be monetized as either a digital product, physical item, or SaaS platform. Each product concept should meet the following criteria:
-            
-            1. Ads Prove Demand: The question must have significant ad spend, indicating existing consumer interest and willingness to invest in solutions.
-            2. Multiple Monetization Paths: Offer flexibility for selling as a digital download (e.g., eBook, course), physical product (e.g., kits, tools), or recurring revenue model (e.g., app, subscription).
-            3. Scalable Infrastructure: Ensure low overhead costs for digital products and leverage print-on-demand or efficient manufacturing for physical goods.
-            
-            Present your findings in a structured format, including the trending question, associated niche, and detailed product idea with potential upsells or extensions. Use recent trends from the past three months to ensure relevance and timeliness.
-            
-            Format each entry as:
-            Question: [The question]
-            Niche: [The niche/category]
-            Product Idea: [The product solution]
-            Monetization: [How it can be monetized]`;
-            
-            // Make API request
-            const response = await fetch(API_URL, {
+            // Make API request to your backend
+            const response = await fetch(BACKEND_API_URL, {
                 method: 'POST',
                 headers: {
-                    'Authorization': `Bearer ${API_KEY}`,
                     'Content-Type': 'application/json',
-                    'HTTP-Referer': window.location.href,
-                    'X-Title': 'Most Asked Questions Widget'
                 },
-                body: JSON.stringify({
-                    model: "deepseek/deepseek-chat:free",
-                    messages: [
-                        {
-                            role: "user",
-                            content: prompt
-                        }
-                    ],
-                    temperature: 0.7,
-                    max_tokens: 2000
+                body: JSON.stringify({ 
+                    niche: niche 
                 })
             });
             
@@ -81,10 +46,13 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Process response
             const data = await response.json();
-            const content = data.choices[0].message.content;
             
-            // Display results
-            displayResults(content);
+            if (data.success) {
+                displayResults(data.data);
+            } else {
+                throw new Error(data.error || 'Unknown error from server');
+            }
+            
         } catch (error) {
             // Handle errors
             console.error('Error fetching data:', error);
