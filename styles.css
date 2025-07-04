@@ -1,0 +1,352 @@
+/* Root variables for easy theming */
+:root {
+    --primary-color: #4361ee;
+    --secondary-color: #3a0ca3;
+    --bg-color: #f8f9fa;
+    --card-bg: #ffffff;
+    --text-color: #2b2d42;
+    --light-text: #8d99ae;
+    --border-radius: 12px;
+    --box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    --transition: all 0.3s ease;
+}
+
+/* Base styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-color);
+    margin: 0;
+    padding: 20px;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    box-sizing: border-box;
+}
+
+/* Main widget container */
+.maq-widget {
+    max-width: 1000px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 2rem;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    border-radius: var(--border-radius);
+    box-sizing: border-box;
+}
+
+/* Header section */
+.maq-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+/* Title styling */
+.maq-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: var(--secondary-color);
+}
+
+/* Subtitle styling */
+.maq-subtitle {
+    font-size: 1rem;
+    color: var(--light-text);
+    margin-bottom: 1.5rem;
+}
+
+/* Input group container */
+.maq-input-group {
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+
+/* Input label */
+.maq-input-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+/* Text input field */
+.maq-input {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+    box-sizing: border-box;
+}
+
+/* Input focus state */
+.maq-input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+}
+
+/* Placeholder text */
+.maq-input::placeholder {
+    color: #aaa;
+    font-style: italic;
+}
+
+/* Main button styles */
+.maq-btn {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: 0 4px 15px rgba(67, 97, 238, 0.3);
+}
+
+/* Button hover state */
+.maq-btn:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(67, 97, 238, 0.4);
+}
+
+/* Disabled button state */
+.maq-btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* Loading button state */
+.maq-btn.loading {
+    position: relative;
+    padding-right: 3.5rem;
+}
+
+/* Loading spinner animation */
+.maq-btn.loading:after {
+    content: "";
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    width: 1.2rem;
+    height: 1.2rem;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    transform: translateY(-50%);
+}
+
+/* Spinner rotation animation */
+@keyframes spin {
+    to { transform: translateY(-50%) rotate(360deg); }
+}
+
+/* Results container - initially hidden */
+.maq-results {
+    display: none;
+    margin-top: 2rem;
+    animation: fadeIn 0.5s ease;
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Card styling for each result */
+.maq-card {
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: var(--box-shadow);
+    transition: var(--transition);
+    position: relative;
+}
+
+/* Card hover effect */
+.maq-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Question text styling */
+.maq-question {
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+/* Niche tag styling */
+.maq-niche {
+    display: inline-block;
+    background-color: rgba(67, 97, 238, 0.1);
+    color: var(--primary-color);
+    padding: 0.3rem 0.8rem;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    margin-bottom: 1rem;
+}
+
+/* Product idea text */
+.maq-product {
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+/* Monetization text */
+.maq-monetization {
+    font-size: 0.9rem;
+    color: var(--light-text);
+}
+
+/* Highlighted monetization text */
+.maq-monetization span {
+    font-weight: 500;
+    color: var(--secondary-color);
+}
+
+/* Loading dots container */
+.maq-loader {
+    display: none;
+    text-align: center;
+    padding: 2rem;
+}
+
+/* Loading dots */
+.maq-loader .dot {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    margin: 0 4px;
+    animation: pulse 1.4s infinite ease-in-out;
+}
+
+/* Second dot animation delay */
+.maq-loader .dot:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+/* Third dot animation delay */
+.maq-loader .dot:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+/* Pulsing animation */
+@keyframes pulse {
+    0%, 60%, 100% { transform: scale(0.8); opacity: 0.5; }
+    30% { transform: scale(1); opacity: 1; }
+}
+
+/* Error message styling */
+.maq-error {
+    display: none;
+    color: #d90429;
+    background-color: rgba(217, 4, 41, 0.1);
+    padding: 1rem;
+    border-radius: var(--border-radius);
+    text-align: center;
+    margin-top: 1rem;
+    animation: fadeIn 0.3s ease;
+}
+
+/* Copy button styling */
+.maq-copy-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background-color: rgba(67, 97, 238, 0.1);
+    color: var(--primary-color);
+    border: none;
+    border-radius: 4px;
+    padding: 0.3rem 0.6rem;
+    font-size: 0.7rem;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.maq-copy-btn:hover {
+    background-color: rgba(67, 97, 238, 0.2);
+}
+
+.maq-copy-btn svg {
+    width: 12px;
+    height: 12px;
+    fill: currentColor;
+}
+
+/* Copy all button styling */
+.maq-copy-all-container {
+    text-align: right;
+    margin-bottom: 1rem;
+    display: none;
+}
+
+.maq-copy-all-btn {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: var(--transition);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.maq-copy-all-btn:hover {
+    background-color: var(--secondary-color);
+}
+
+/* Tablet responsive styles */
+@media (max-width: 768px) {
+    .maq-widget {
+        padding: 1.5rem;
+    }
+    
+    .maq-title {
+        font-size: 1.5rem;
+    }
+    
+    .maq-card {
+        padding: 1.2rem;
+    }
+}
+
+/* Mobile responsive styles */
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+    
+    .maq-widget {
+        padding: 1rem;
+    }
+    
+    .maq-title {
+        font-size: 1.3rem;
+    }
+    
+    .maq-btn {
+        width: 100%;
+        padding: 0.8rem;
+    }
+  }
