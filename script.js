@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const copyAllBtn = document.getElementById('maqCopyAllBtn');
     
     // API configuration
-    const API_KEY = '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';
+    const API_KEY = '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';
     const API_URL = 'https://openrouter.ai/api/v1/chat/completions';
     
     // Add click handler to fetch button
